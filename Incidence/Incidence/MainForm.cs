@@ -15,6 +15,7 @@ namespace Incidence
     {
         string mFileName = string.Empty;
         string mText = string.Empty;
+        IncidenceModel model = new IncidenceModel();
 
         public MainForm()
         {
@@ -41,7 +42,7 @@ namespace Incidence
                     inputDataTextBox.ScrollBars = ScrollBars.Both;
 
                     ReadFromFile();
-                    inputDataTextBox.Text = mText;
+                    inputDataTextBox.Text = model.mText;
                 }
             }
             catch { }
@@ -50,12 +51,17 @@ namespace Incidence
         private void ReadFromFile()
         {
             StreamReader sr = new StreamReader(mFileName);
-            mText = sr.ReadToEnd();
+            model.mText = sr.ReadToEnd();
         }
 
         private void clearButton_Click(object sender, EventArgs e)
         {
             inputDataTextBox.Text = string.Empty;
+        }
+
+        private void calculateButton_Click(object sender, EventArgs e)
+        {
+            model.Calculate();
         }
     }
 }
