@@ -42,16 +42,17 @@ namespace Incidence
 
         private string ClearUnnecessarySymbols(string text)
         {
-            text = text.Replace(",", "");
-            text = text.Replace("(", "");
-            text = text.Replace(")", "");
-            text = text.Replace(":", "");
-            text = text.Replace(";", "");
-            text = text.Replace(",", "");
-            text = text.Replace("-", "");
-            text = text.Replace("\"", "");
-            text = text.Replace("\r", " ");
-            text = text.Replace("\n", " ");
+            text = text.Replace(",", "")
+                .Replace("(", "")
+                .Replace(")", "")
+                .Replace(":", "")
+                .Replace(";", "")
+                .Replace(",", "")
+                .Replace("-", "")
+                .Replace("\"", "")
+                .Replace("\r", " ")
+                .Replace("\n", " ");
+
             return text;
         }
 
