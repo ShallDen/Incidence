@@ -35,6 +35,8 @@
             this.incidenceGrid = new System.Windows.Forms.DataGridView();
             this.saveButton = new System.Windows.Forms.Button();
             this.incidenceLabel = new System.Windows.Forms.Label();
+            this.chooseFileButton = new System.Windows.Forms.Button();
+            this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.incidenceGrid)).BeginInit();
             this.SuspendLayout();
             // 
@@ -43,7 +45,7 @@
             this.inputDataTextBox.Location = new System.Drawing.Point(13, 35);
             this.inputDataTextBox.Multiline = true;
             this.inputDataTextBox.Name = "inputDataTextBox";
-            this.inputDataTextBox.Size = new System.Drawing.Size(337, 300);
+            this.inputDataTextBox.Size = new System.Drawing.Size(337, 288);
             this.inputDataTextBox.TabIndex = 0;
             // 
             // inputTextLabelLabel
@@ -57,7 +59,7 @@
             // 
             // calculateButton
             // 
-            this.calculateButton.Location = new System.Drawing.Point(275, 344);
+            this.calculateButton.Location = new System.Drawing.Point(275, 341);
             this.calculateButton.Name = "calculateButton";
             this.calculateButton.Size = new System.Drawing.Size(75, 23);
             this.calculateButton.TabIndex = 2;
@@ -66,24 +68,25 @@
             // 
             // clearButton
             // 
-            this.clearButton.Location = new System.Drawing.Point(176, 344);
+            this.clearButton.Location = new System.Drawing.Point(180, 341);
             this.clearButton.Name = "clearButton";
             this.clearButton.Size = new System.Drawing.Size(75, 23);
             this.clearButton.TabIndex = 3;
             this.clearButton.Text = "Clear";
             this.clearButton.UseVisualStyleBackColor = true;
+            this.clearButton.Click += new System.EventHandler(this.clearButton_Click);
             // 
             // incidenceGrid
             // 
             this.incidenceGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.incidenceGrid.Location = new System.Drawing.Point(420, 35);
             this.incidenceGrid.Name = "incidenceGrid";
-            this.incidenceGrid.Size = new System.Drawing.Size(423, 300);
+            this.incidenceGrid.Size = new System.Drawing.Size(288, 288);
             this.incidenceGrid.TabIndex = 4;
             // 
             // saveButton
             // 
-            this.saveButton.Location = new System.Drawing.Point(768, 344);
+            this.saveButton.Location = new System.Drawing.Point(633, 341);
             this.saveButton.Name = "saveButton";
             this.saveButton.Size = new System.Drawing.Size(75, 23);
             this.saveButton.TabIndex = 5;
@@ -99,11 +102,26 @@
             this.incidenceLabel.TabIndex = 6;
             this.incidenceLabel.Text = "Incidence matrix:";
             // 
+            // chooseFileButton
+            // 
+            this.chooseFileButton.Location = new System.Drawing.Point(13, 341);
+            this.chooseFileButton.Name = "chooseFileButton";
+            this.chooseFileButton.Size = new System.Drawing.Size(75, 23);
+            this.chooseFileButton.TabIndex = 7;
+            this.chooseFileButton.Text = "Choose file";
+            this.chooseFileButton.UseVisualStyleBackColor = true;
+            this.chooseFileButton.Click += new System.EventHandler(this.chooseFileButton_Click);
+            // 
+            // openFileDialog
+            // 
+            this.openFileDialog.FileName = "openFileDialog";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(891, 379);
+            this.ClientSize = new System.Drawing.Size(736, 379);
+            this.Controls.Add(this.chooseFileButton);
             this.Controls.Add(this.incidenceLabel);
             this.Controls.Add(this.saveButton);
             this.Controls.Add(this.incidenceGrid);
@@ -128,6 +146,8 @@
         private System.Windows.Forms.DataGridView incidenceGrid;
         private System.Windows.Forms.Button saveButton;
         private System.Windows.Forms.Label incidenceLabel;
+        private System.Windows.Forms.Button chooseFileButton;
+        private System.Windows.Forms.OpenFileDialog openFileDialog;
     }
 }
 
