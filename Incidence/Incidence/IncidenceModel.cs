@@ -9,46 +9,60 @@ namespace Incidence
     public class IncidenceModel
     {
         public string mText = string.Empty;
-        public List<string> wordList = new List<string>();
-        public List<string> lowerWordList;
-        string[] wordSeparator =  { " ", ". ", "!", "?" };
+        public string mClearedText = string.Empty;
+        public List<string> mWordList = new List<string>();
+        public List<string> mLowerWordList = new List<string>();
+
+        public string mDictionaryText = string.Empty;
+        public string mClearedDictionaryText = string.Empty;
+        public List<string> mLordDictionaryList = new List<string>();
+        public List<string> mLowerWordDictionaryList = new List<string>();
+
+        private string[] wordSeparator =  { " ", ". ", "!", "?" };
 
         public void Calculate()
         {
-            PreProcessing();
+            TextPreProcessing();
+            DictionaryPreProcessing();
         }
 
-        private void PreProcessing()
+        private void TextPreProcessing()
         {
-            ClearUnnecessarySymbols();
-            CreateListOfWords();
-            WordsToLowerCase();
+            mClearedText = ClearUnnecessarySymbols(mText);
+            mWordList = CreateListOfWords(mClearedText);
+            mLowerWordList = WordsToLowerCase(mWordList);
         }
 
-        private void ClearUnnecessarySymbols()
+        private void DictionaryPreProcessing()
         {
-            mText = mText.Replace(",", "");
-            mText = mText.Replace("(", "");
-            mText = mText.Replace(")", "");
-            mText = mText.Replace(":", "");
-            mText = mText.Replace(";", "");
-            mText = mText.Replace(",", "");
-            mText = mText.Replace("-", "");
-            mText = mText.Replace("\"", "");
-            mText = mText.Replace("\r", " ");
-            mText = mText.Replace("\n", " ");
+            mClearedDictionaryText = ClearUnnecessarySymbols(mDictionaryText);
+            mLordDictionaryList = CreateListOfWords(mClearedDictionaryText);
+            mLowerWordDictionaryList = WordsToLowerCase(mLordDictionaryList);
         }
 
-        private List<string> CreateListOfWords()
+        private string ClearUnnecessarySymbols(string text)
         {
-            wordList = mText.Split(wordSeparator, StringSplitOptions.RemoveEmptyEntries).ToList();
-            return wordList;
+            text = text.Replace(",", "");
+            text = text.Replace("(", "");
+            text = text.Replace(")", "");
+            text = text.Replace(":", "");
+            text = text.Replace(";", "");
+            text = text.Replace(",", "");
+            text = text.Replace("-", "");
+            text = text.Replace("\"", "");
+            text = text.Replace("\r", " ");
+            text = text.Replace("\n", " ");
+            return text;
         }
 
-        private List<string> WordsToLowerCase()
+        private List<string> CreateListOfWords(string text)
         {
-            lowerWordList = wordList.Select(c => c.ToLower()).ToList();
-            return lowerWordList;
+            return text.Split(wordSeparator, StringSplitOptions.RemoveEmptyEntries).ToList();
+        }
+
+        private List<string> WordsToLowerCase(List<string> list)
+        {
+            return list.Select(c => c.ToLower()).ToList(); 
         }
 
     }

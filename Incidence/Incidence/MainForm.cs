@@ -14,6 +14,8 @@ namespace Incidence
     public partial class MainForm : Form
     {
         string mFileName = string.Empty;
+        string mFileDir = string.Empty;
+        string mDictionaryFileName = string.Empty;
         string mText = string.Empty;
         IncidenceModel model = new IncidenceModel();
 
@@ -39,9 +41,12 @@ namespace Incidence
                     }
 
                     mFileName = openFileDialog.FileName;
+                    mFileDir = mFileName.Replace(string.Format("\\" + openFileDialog.SafeFileName), "");
+                    mDictionaryFileName = mFileDir + "\\Dictionary.txt";
                     inputDataTextBox.ScrollBars = ScrollBars.Both;
 
-                    ReadFromFile();
+                    ReadText();
+                    ReadDictionary();
                     inputDataTextBox.Text = model.mText;
                 }
             }
@@ -51,7 +56,7 @@ namespace Incidence
             }
         }
 
-        private void ReadFromFile()
+        private void ReadText()
         {
             try
             {
@@ -62,7 +67,7 @@ namespace Incidence
             {
                 MessageBox.Show(ex.Message);
             }
-}
+        }
 
         private void clearButton_Click(object sender, EventArgs e)
         {
@@ -72,7 +77,25 @@ namespace Incidence
         private void calculateButton_Click(object sender, EventArgs e)
         {
             model.Calculate();
-            inputDataTextBox.Text = model.mText;
+            inputDataTextBox.Text = "TEXT:\r\n";
+            inputDataTextBox.Text += "************************\r\n";
+            inputDataTextBox.Text += model.mClearedText;
+            inputDataTextBox.Text += "\r\n\r\nDICTIONARY:\r\n";
+            inputDataTextBox.Text += "************************\r\n";
+            inputDataTextBox.Text += model.mClearedDictionaryText;
+        }
+
+        private void ReadDictionary()
+        {
+            try
+            {
+                StreamReader sr = new StreamReader(mDictionaryFileName);
+                model.mDictionaryText = sr.ReadToEnd();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

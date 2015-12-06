@@ -130,6 +130,7 @@
             this.Controls.Add(this.calculateButton);
             this.Controls.Add(this.inputTextLabelLabel);
             this.Controls.Add(this.inputDataTextBox);
+            this.MinimumSize = new System.Drawing.Size(752, 417);
             this.Name = "MainForm";
             this.Text = "Incidence";
             ((System.ComponentModel.ISupportInitialize)(this.incidenceGrid)).EndInit();
