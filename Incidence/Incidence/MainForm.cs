@@ -45,14 +45,24 @@ namespace Incidence
                     inputDataTextBox.Text = model.mText;
                 }
             }
-            catch { }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void ReadFromFile()
         {
-            StreamReader sr = new StreamReader(mFileName);
-            model.mText = sr.ReadToEnd();
-        }
+            try
+            {
+                StreamReader sr = new StreamReader(mFileName);
+                model.mText = sr.ReadToEnd();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+}
 
         private void clearButton_Click(object sender, EventArgs e)
         {
@@ -62,6 +72,7 @@ namespace Incidence
         private void calculateButton_Click(object sender, EventArgs e)
         {
             model.Calculate();
+            inputDataTextBox.Text = model.mText;
         }
     }
 }
