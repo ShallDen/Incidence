@@ -18,12 +18,18 @@ namespace Incidence
         public List<string> mLordDictionaryList = new List<string>();
         public List<string> mLowerWordDictionaryList = new List<string>();
 
+        public List<string> mTerminList = new List<string>();
+        public List<string> mSentenceList = new List<string>();
+
         private string[] wordSeparator =  { " ", ". ", "!", "?" };
+        private string[] sentenceSeparator =  { ". ", "!", "?", "\r\n" };
 
         public void Calculate()
         {
             TextPreProcessing();
             DictionaryPreProcessing();
+            SentencePreProcessing();
+            FindDictionaryItems();
         }
 
         private void TextPreProcessing()
@@ -40,6 +46,16 @@ namespace Incidence
             mLowerWordDictionaryList = WordsToLowerCase(mLordDictionaryList);
         }
 
+        private void SentencePreProcessing()
+        {
+            mSentenceList = CreateListOfSentence(mText);
+        }
+
+        private List<String> CreateListOfSentence(string text)
+        {
+            return text.Split(sentenceSeparator, StringSplitOptions.RemoveEmptyEntries).ToList();
+        }
+
         private string ClearUnnecessarySymbols(string text)
         {
             text = text.Replace(",", "")
@@ -54,6 +70,22 @@ namespace Incidence
                 .Replace("\n", " ");
 
             return text;
+        }
+
+        private void FindDictionaryItems()
+        {
+            foreach(var textWord in mLowerWordList)
+            {
+                foreach(var dictionaryWord in mLowerWordDictionaryList)
+                {
+                    if(textWord == dictionaryWord)
+                    {
+                        mTerminList.Add(textWord);
+                    }
+                }
+            }
+
+            mTerminList = mTerminList.Distinct().ToList(); //delete repeating words
         }
 
         private List<string> CreateListOfWords(string text)

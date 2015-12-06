@@ -84,23 +84,14 @@ namespace Incidence
             inputDataTextBox.Text += "************************\r\n";
             inputDataTextBox.Text += model.mClearedDictionaryText;
 
-
-            inputDataTextBox.Text += "\r\n\r\nLOWER TEXT:\r\n";
+            inputDataTextBox.Text += "\r\n\r\nTERMINS:\r\n";
             inputDataTextBox.Text += "************************";
-            foreach (var word in model.mLowerWordList)
+
+            foreach (var word in model.mTerminList)
             {
                 inputDataTextBox.Text += "\r\n";
                 inputDataTextBox.Text += word;
             }
-
-            inputDataTextBox.Text += "\r\n\r\nLOWER DICTIONARY:\r\n";
-            inputDataTextBox.Text += "************************";
-            foreach (var word in model.mLowerWordDictionaryList)
-            {
-                inputDataTextBox.Text += "\r\n";
-                inputDataTextBox.Text += word;
-            }
-
         }
 
         private void ReadDictionary()
