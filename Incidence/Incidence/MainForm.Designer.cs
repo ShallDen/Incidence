@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.inputDataTextBox = new System.Windows.Forms.TextBox();
             this.inputTextLabelLabel = new System.Windows.Forms.Label();
             this.calculateButton = new System.Windows.Forms.Button();
@@ -165,6 +166,7 @@
             this.Controls.Add(this.calculateButton);
             this.Controls.Add(this.inputTextLabelLabel);
             this.Controls.Add(this.inputDataTextBox);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(752, 423);
             this.Name = "MainForm";
             this.Text = "Incidence";
