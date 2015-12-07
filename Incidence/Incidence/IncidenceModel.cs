@@ -35,7 +35,7 @@ namespace Incidence
             SentencePreProcessing();
             FindDictionaryItems();
             InitializeMatrix();
-            Find();
+            FillMatrix();
         }
 
         private void TextPreProcessing()
@@ -113,7 +113,7 @@ namespace Incidence
                     mIncedenceMatrix[i, j] = -1;
         }
          
-        private void Find()
+        private void FillMatrix()
         {
             int i = 0;
             foreach (var termin in mTerminList)
@@ -123,23 +123,19 @@ namespace Incidence
                 foreach (var sentence in sentences)
                 {
                     int j = 0;
-                    foreach (var inTermin in mTerminList)
+                    foreach (var internalTermin in mTerminList)
                     {
-                        if (inTermin == termin)
+                        if (internalTermin == termin || mIncedenceMatrix[i, j] == 1)
                         {
                             j++;
                             continue;
                         }
 
-                        if (sentence.Contains(inTermin))
-                        {
+                        if (sentence.Contains(internalTermin))
                             mIncedenceMatrix[i, j] = 1;
-                        }
                         else
-                        {
-                            if (mIncedenceMatrix[i, j] != 1)
-                                mIncedenceMatrix[i, j] = 0;
-                        }
+                            mIncedenceMatrix[i, j] = 0;
+
                         j++;
                     }
                 }
