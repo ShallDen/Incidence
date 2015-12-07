@@ -26,7 +26,7 @@ namespace Incidence
         private string[] wordSeparator =  { " ", ". ", "!", "?" };
         private string[] sentenceSeparator =  { ". ", "!", "?", "\r\n" };
 
-        private int[] mIncedenceMatrix;
+        private int[,] mIncedenceMatrix;
 
         public void Calculate()
         {
@@ -107,16 +107,40 @@ namespace Incidence
 
         private void InitializeMatrix()
         {
-            mIncedenceMatrix = new int[mTerminList.Count];
+            mIncedenceMatrix = new int[mTerminList.Count, mTerminList.Count];
+            for (int i = 0; i < mTerminList.Count; i++)
+                for (int j = 0; j < mTerminList.Count; j++)
+                    mIncedenceMatrix[i, j] = -1;
         }
 
         private void Find()
         {
-            int index = 0;
+            int i = 0;
             foreach(var termin in mTerminList)
             {
                 string sentence = FindSentenseByWord(termin)[0];
-                index++;
+
+                int j = 0;
+                foreach (var inTermin in mTerminList)
+                {
+                    if (inTermin == termin)
+                    {
+                        j++;
+                        continue;
+                    }
+                        
+                    if (sentence.Contains(inTermin))
+                    {
+                        mIncedenceMatrix[i, j] = 1;
+                    }
+                    else
+                    {
+                        mIncedenceMatrix[i, j] = 0;
+                    }
+                    j++;
+                }
+
+                i++;
             }
         }
 
