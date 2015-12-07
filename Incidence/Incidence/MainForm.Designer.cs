@@ -44,6 +44,9 @@
             // 
             // inputDataTextBox
             // 
+            this.inputDataTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.inputDataTextBox.Location = new System.Drawing.Point(13, 35);
             this.inputDataTextBox.Multiline = true;
             this.inputDataTextBox.Name = "inputDataTextBox";
@@ -61,6 +64,7 @@
             // 
             // calculateButton
             // 
+            this.calculateButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.calculateButton.Location = new System.Drawing.Point(420, 338);
             this.calculateButton.Name = "calculateButton";
             this.calculateButton.Size = new System.Drawing.Size(75, 36);
@@ -71,6 +75,7 @@
             // 
             // clearButton
             // 
+            this.clearButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.clearButton.Location = new System.Drawing.Point(275, 338);
             this.clearButton.Name = "clearButton";
             this.clearButton.Size = new System.Drawing.Size(75, 36);
@@ -81,6 +86,8 @@
             // 
             // incidenceGrid
             // 
+            this.incidenceGrid.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.incidenceGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.incidenceGrid.Location = new System.Drawing.Point(420, 35);
             this.incidenceGrid.Name = "incidenceGrid";
@@ -89,6 +96,7 @@
             // 
             // saveButton
             // 
+            this.saveButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.saveButton.Location = new System.Drawing.Point(633, 338);
             this.saveButton.Name = "saveButton";
             this.saveButton.Size = new System.Drawing.Size(75, 36);
@@ -107,6 +115,7 @@
             // 
             // chooseFileButton
             // 
+            this.chooseFileButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.chooseFileButton.Location = new System.Drawing.Point(12, 338);
             this.chooseFileButton.Name = "chooseFileButton";
             this.chooseFileButton.Size = new System.Drawing.Size(75, 36);
@@ -121,6 +130,7 @@
             // 
             // chooseDictionaryButton
             // 
+            this.chooseDictionaryButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.chooseDictionaryButton.Location = new System.Drawing.Point(93, 338);
             this.chooseDictionaryButton.Name = "chooseDictionaryButton";
             this.chooseDictionaryButton.Size = new System.Drawing.Size(75, 36);
@@ -131,6 +141,7 @@
             // 
             // showDictionaryButton
             // 
+            this.showDictionaryButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.showDictionaryButton.Location = new System.Drawing.Point(194, 338);
             this.showDictionaryButton.Name = "showDictionaryButton";
             this.showDictionaryButton.Size = new System.Drawing.Size(75, 36);
@@ -154,7 +165,7 @@
             this.Controls.Add(this.calculateButton);
             this.Controls.Add(this.inputTextLabelLabel);
             this.Controls.Add(this.inputDataTextBox);
-            this.MinimumSize = new System.Drawing.Size(752, 417);
+            this.MinimumSize = new System.Drawing.Size(752, 423);
             this.Name = "MainForm";
             this.Text = "Incidence";
             this.Load += new System.EventHandler(this.MainForm_Load);

@@ -153,8 +153,6 @@ namespace Incidence
             }
         }
 
-        
-
         private void MainForm_Load(object sender, EventArgs e)
         {
             chooseDictionaryButton.Visible = false;
