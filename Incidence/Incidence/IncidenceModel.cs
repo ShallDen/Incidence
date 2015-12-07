@@ -19,10 +19,14 @@ namespace Incidence
         public List<string> mLowerWordDictionaryList = new List<string>();
 
         public List<string> mTerminList = new List<string>();
+
         public List<string> mSentenceList = new List<string>();
+        public List<string> mLowerSentenceList = new List<string>();
 
         private string[] wordSeparator =  { " ", ". ", "!", "?" };
         private string[] sentenceSeparator =  { ". ", "!", "?", "\r\n" };
+
+        private int[] mIncedenceMatrix;
 
         public void Calculate()
         {
@@ -30,6 +34,8 @@ namespace Incidence
             DictionaryPreProcessing();
             SentencePreProcessing();
             FindDictionaryItems();
+            InitializeMatrix();
+            Find();
         }
 
         private void TextPreProcessing()
@@ -48,7 +54,8 @@ namespace Incidence
 
         private void SentencePreProcessing()
         {
-            mSentenceList = CreateListOfSentence(mText);
+            mSentenceList = CreateListOfSentence(mClearedText);
+            mLowerSentenceList = WordsToLowerCase(mSentenceList);
         }
 
         private List<String> CreateListOfSentence(string text)
@@ -98,5 +105,31 @@ namespace Incidence
             return list.Select(c => c.ToLower()).ToList(); 
         }
 
+        private void InitializeMatrix()
+        {
+            mIncedenceMatrix = new int[mTerminList.Count];
+        }
+
+        private void Find()
+        {
+            int index = 0;
+            foreach(var termin in mTerminList)
+            {
+                string sentence = FindSentenseByWord(termin)[0];
+                index++;
+            }
+        }
+
+        private List<string> FindSentenseByWord(string word)
+        {
+            List<string> foundedSententences = new List<string>();
+            foreach(var sentense in mLowerSentenceList)
+            {
+                if (sentense.Contains(word))
+                    foundedSententences.Add(sentense);
+            }
+
+            return foundedSententences;
+        }
     }
 }
