@@ -112,34 +112,37 @@ namespace Incidence
                 for (int j = 0; j < mTerminList.Count; j++)
                     mIncedenceMatrix[i, j] = -1;
         }
-
+         
         private void Find()
         {
             int i = 0;
-            foreach(var termin in mTerminList)
+            foreach (var termin in mTerminList)
             {
-                string sentence = FindSentenseByWord(termin)[0];
+                List<string> sentences = FindSentenseByWord(termin);
 
-                int j = 0;
-                foreach (var inTermin in mTerminList)
+                foreach (var sentence in sentences)
                 {
-                    if (inTermin == termin)
+                    int j = 0;
+                    foreach (var inTermin in mTerminList)
                     {
-                        j++;
-                        continue;
-                    }
-                        
-                    if (sentence.Contains(inTermin))
-                    {
-                        mIncedenceMatrix[i, j] = 1;
-                    }
-                    else
-                    {
-                        mIncedenceMatrix[i, j] = 0;
-                    }
-                    j++;
-                }
+                        if (inTermin == termin)
+                        {
+                            j++;
+                            continue;
+                        }
 
+                        if (sentence.Contains(inTermin))
+                        {
+                            mIncedenceMatrix[i, j] = 1;
+                        }
+                        else
+                        {
+                            if (mIncedenceMatrix[i, j] != 1)
+                                mIncedenceMatrix[i, j] = 0;
+                        }
+                        j++;
+                    }
+                }
                 i++;
             }
         }
