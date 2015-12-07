@@ -107,6 +107,7 @@
             // 
             // incidenceLabel
             // 
+            this.incidenceLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.incidenceLabel.AutoSize = true;
             this.incidenceLabel.Location = new System.Drawing.Point(420, 13);
             this.incidenceLabel.Name = "incidenceLabel";
