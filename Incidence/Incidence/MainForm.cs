@@ -26,6 +26,7 @@ namespace Incidence
 
         private void chooseFileButton_Click(object sender, EventArgs e)
         {
+            bool isDictionaonaryAutoLoaded = false;
             try
             {
                 openFileDialog.FileName = string.Empty;
@@ -46,8 +47,48 @@ namespace Incidence
                     inputDataTextBox.ScrollBars = ScrollBars.Both;
 
                     ReadText();
-                    ReadDictionary();
+                    isDictionaonaryAutoLoaded = ReadDictionary();
+
+                    if (isDictionaonaryAutoLoaded)
+                        chooseDictionaryButton.Visible = false;
+                    else
+                        chooseDictionaryButton.Visible = true;
+
                     inputDataTextBox.Text = model.mText;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(string.Format(ex.Message + "\nPlease choose dictionary file manually"));
+            }
+        }
+
+        private void chooseDictionaryButton_Click(object sender, EventArgs e)
+        {
+            bool isDictionaonaryLoaded = false;
+
+            try
+            {
+                openFileDialog.FileName = string.Empty;
+                openFileDialog.Filter = "txt files (*.txt)|*.txt";
+                openFileDialog.FilterIndex = 2;
+                openFileDialog.RestoreDirectory = true;
+
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    if (openFileDialog.FileName == string.Empty)
+                    {
+                        return;
+                    }
+
+                    mDictionaryFileName = openFileDialog.FileName;
+
+                    isDictionaonaryLoaded = ReadDictionary();
+
+                    if (isDictionaonaryLoaded)
+                        chooseDictionaryButton.Visible = false;
+                    else
+                        chooseDictionaryButton.Visible = true;
                 }
             }
             catch (Exception ex)
@@ -56,16 +97,33 @@ namespace Incidence
             }
         }
 
-        private void ReadText()
+        private bool ReadText()
         {
             try
             {
                 StreamReader sr = new StreamReader(mFileName);
                 model.mText = sr.ReadToEnd();
+                return true;
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
+                return false;
+            }
+        }
+
+        private bool ReadDictionary()
+        {
+            try
+            {
+                StreamReader sr = new StreamReader(mDictionaryFileName);
+                model.mDictionaryText = sr.ReadToEnd();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return false;
             }
         }
 
@@ -77,6 +135,7 @@ namespace Incidence
         private void calculateButton_Click(object sender, EventArgs e)
         {
             model.Calculate();
+
             inputDataTextBox.Text = "TEXT:\r\n";
             inputDataTextBox.Text += "************************\r\n";
             inputDataTextBox.Text += model.mClearedText;
@@ -94,17 +153,11 @@ namespace Incidence
             }
         }
 
-        private void ReadDictionary()
+        
+
+        private void MainForm_Load(object sender, EventArgs e)
         {
-            try
-            {
-                StreamReader sr = new StreamReader(mDictionaryFileName);
-                model.mDictionaryText = sr.ReadToEnd();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+            chooseDictionaryButton.Visible = false;
         }
     }
 }

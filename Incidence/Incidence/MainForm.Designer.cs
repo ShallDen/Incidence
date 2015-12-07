@@ -37,6 +37,8 @@
             this.incidenceLabel = new System.Windows.Forms.Label();
             this.chooseFileButton = new System.Windows.Forms.Button();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.chooseDictionaryButton = new System.Windows.Forms.Button();
+            this.showDictionaryButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.incidenceGrid)).BeginInit();
             this.SuspendLayout();
             // 
@@ -59,9 +61,9 @@
             // 
             // calculateButton
             // 
-            this.calculateButton.Location = new System.Drawing.Point(275, 341);
+            this.calculateButton.Location = new System.Drawing.Point(420, 338);
             this.calculateButton.Name = "calculateButton";
-            this.calculateButton.Size = new System.Drawing.Size(75, 23);
+            this.calculateButton.Size = new System.Drawing.Size(75, 36);
             this.calculateButton.TabIndex = 2;
             this.calculateButton.Text = "Calculate";
             this.calculateButton.UseVisualStyleBackColor = true;
@@ -69,9 +71,9 @@
             // 
             // clearButton
             // 
-            this.clearButton.Location = new System.Drawing.Point(180, 341);
+            this.clearButton.Location = new System.Drawing.Point(275, 338);
             this.clearButton.Name = "clearButton";
-            this.clearButton.Size = new System.Drawing.Size(75, 23);
+            this.clearButton.Size = new System.Drawing.Size(75, 36);
             this.clearButton.TabIndex = 3;
             this.clearButton.Text = "Clear";
             this.clearButton.UseVisualStyleBackColor = true;
@@ -87,11 +89,11 @@
             // 
             // saveButton
             // 
-            this.saveButton.Location = new System.Drawing.Point(633, 341);
+            this.saveButton.Location = new System.Drawing.Point(633, 338);
             this.saveButton.Name = "saveButton";
-            this.saveButton.Size = new System.Drawing.Size(75, 23);
+            this.saveButton.Size = new System.Drawing.Size(75, 36);
             this.saveButton.TabIndex = 5;
-            this.saveButton.Text = "Save";
+            this.saveButton.Text = "Save results";
             this.saveButton.UseVisualStyleBackColor = true;
             // 
             // incidenceLabel
@@ -105,9 +107,9 @@
             // 
             // chooseFileButton
             // 
-            this.chooseFileButton.Location = new System.Drawing.Point(13, 341);
+            this.chooseFileButton.Location = new System.Drawing.Point(12, 338);
             this.chooseFileButton.Name = "chooseFileButton";
-            this.chooseFileButton.Size = new System.Drawing.Size(75, 23);
+            this.chooseFileButton.Size = new System.Drawing.Size(75, 36);
             this.chooseFileButton.TabIndex = 7;
             this.chooseFileButton.Text = "Choose file";
             this.chooseFileButton.UseVisualStyleBackColor = true;
@@ -117,11 +119,32 @@
             // 
             this.openFileDialog.FileName = "openFileDialog";
             // 
+            // chooseDictionaryButton
+            // 
+            this.chooseDictionaryButton.Location = new System.Drawing.Point(93, 338);
+            this.chooseDictionaryButton.Name = "chooseDictionaryButton";
+            this.chooseDictionaryButton.Size = new System.Drawing.Size(75, 36);
+            this.chooseDictionaryButton.TabIndex = 8;
+            this.chooseDictionaryButton.Text = "Choose dictionary";
+            this.chooseDictionaryButton.UseVisualStyleBackColor = true;
+            this.chooseDictionaryButton.Click += new System.EventHandler(this.chooseDictionaryButton_Click);
+            // 
+            // showDictionaryButton
+            // 
+            this.showDictionaryButton.Location = new System.Drawing.Point(194, 338);
+            this.showDictionaryButton.Name = "showDictionaryButton";
+            this.showDictionaryButton.Size = new System.Drawing.Size(75, 36);
+            this.showDictionaryButton.TabIndex = 9;
+            this.showDictionaryButton.Text = "Show dictionary";
+            this.showDictionaryButton.UseVisualStyleBackColor = true;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(736, 379);
+            this.ClientSize = new System.Drawing.Size(736, 385);
+            this.Controls.Add(this.showDictionaryButton);
+            this.Controls.Add(this.chooseDictionaryButton);
             this.Controls.Add(this.chooseFileButton);
             this.Controls.Add(this.incidenceLabel);
             this.Controls.Add(this.saveButton);
@@ -133,6 +156,7 @@
             this.MinimumSize = new System.Drawing.Size(752, 417);
             this.Name = "MainForm";
             this.Text = "Incidence";
+            this.Load += new System.EventHandler(this.MainForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.incidenceGrid)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -150,6 +174,8 @@
         private System.Windows.Forms.Label incidenceLabel;
         private System.Windows.Forms.Button chooseFileButton;
         private System.Windows.Forms.OpenFileDialog openFileDialog;
+        private System.Windows.Forms.Button chooseDictionaryButton;
+        private System.Windows.Forms.Button showDictionaryButton;
     }
 }
 
