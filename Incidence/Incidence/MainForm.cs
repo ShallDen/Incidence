@@ -159,5 +159,12 @@ namespace Incidence
         {
             chooseDictionaryButton.Visible = false;
         }
+
+        private void showDictionaryButton_Click(object sender, EventArgs e)
+        {
+            DictionaryForm dictionaryForm = new DictionaryForm();
+            dictionaryForm.mDictionarryText = model.mDictionaryText;
+            dictionaryForm.ShowDialog();
+        }
     }
 }

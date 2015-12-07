@@ -137,6 +137,7 @@
             this.showDictionaryButton.TabIndex = 9;
             this.showDictionaryButton.Text = "Show dictionary";
             this.showDictionaryButton.UseVisualStyleBackColor = true;
+            this.showDictionaryButton.Click += new System.EventHandler(this.showDictionaryButton_Click);
             // 
             // MainForm
             // 

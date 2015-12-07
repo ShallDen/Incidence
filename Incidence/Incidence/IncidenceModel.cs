@@ -15,7 +15,7 @@ namespace Incidence
 
         public string mDictionaryText = string.Empty;
         public string mClearedDictionaryText = string.Empty;
-        public List<string> mLordDictionaryList = new List<string>();
+        public List<string> mLowerDictionaryList = new List<string>();
         public List<string> mLowerWordDictionaryList = new List<string>();
 
         public List<string> mTerminList = new List<string>();
@@ -42,8 +42,8 @@ namespace Incidence
         private void DictionaryPreProcessing()
         {
             mClearedDictionaryText = ClearUnnecessarySymbols(mDictionaryText);
-            mLordDictionaryList = CreateListOfWords(mClearedDictionaryText);
-            mLowerWordDictionaryList = WordsToLowerCase(mLordDictionaryList);
+            mLowerDictionaryList = CreateListOfWords(mClearedDictionaryText);
+            mLowerWordDictionaryList = WordsToLowerCase(mLowerDictionaryList);
         }
 
         private void SentencePreProcessing()
