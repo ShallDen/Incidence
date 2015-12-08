@@ -146,16 +146,36 @@ namespace Incidence
         {
             model.mText = inputDataTextBox.Text;
             model.Calculate();
-            incidenceGrid.AutoGenerateColumns = true;
+            PrintMatrixToGrid(model.mIncedenceMatrix);
+        }
 
-            //TO DO: output to grid
+        private void PrintMatrixToGrid(int[,] matrix)
+        {
+            incidenceGrid.RowCount = matrix.GetLength(0) + 1;
+            incidenceGrid.ColumnCount = matrix.GetLength(1) + 1;
+
+            //Show termins
+            for (int i = 0; i < model.mTerminList.Count; i++)
+            {
+                incidenceGrid.Rows[i + 1].Cells[0].Value = model.mTerminList[i];
+                incidenceGrid.Rows[0].Cells[i + 1].Value = model.mTerminList[i];
+            }
+
+            //Show values of matrix
+            for (int i = 0; i < matrix.GetLength(0); i++)
+            {
+                for (int j = 0; j < matrix.GetLength(1); j++)
+                {
+                    incidenceGrid.Rows[i + 1].Cells[j + 1].Value = matrix[i, j];
+                }
+            }
         }
 
         private void saveButton_Click(object sender, EventArgs e)
         {
             using (StreamWriter file = new StreamWriter(string.Format("C:\\Users\\" + Environment.UserName + "\\Desktop\\Output.txt")))
             {
-                if(model.mTerminList.Count == 0)
+                if (model.mTerminList.Count == 0)
                 {
                     file.WriteLine("There are no termins.");
                     return;
