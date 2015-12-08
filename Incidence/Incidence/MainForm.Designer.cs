@@ -45,9 +45,8 @@
             // 
             // inputDataTextBox
             // 
-            this.inputDataTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.inputDataTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.inputDataTextBox.Location = new System.Drawing.Point(13, 35);
             this.inputDataTextBox.Multiline = true;
             this.inputDataTextBox.Name = "inputDataTextBox";
@@ -65,8 +64,8 @@
             // 
             // calculateButton
             // 
-            this.calculateButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.calculateButton.Location = new System.Drawing.Point(420, 338);
+            this.calculateButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.calculateButton.Location = new System.Drawing.Point(366, 338);
             this.calculateButton.Name = "calculateButton";
             this.calculateButton.Size = new System.Drawing.Size(75, 36);
             this.calculateButton.TabIndex = 4;
@@ -76,7 +75,7 @@
             // 
             // clearButton
             // 
-            this.clearButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.clearButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.clearButton.Location = new System.Drawing.Point(275, 338);
             this.clearButton.Name = "clearButton";
             this.clearButton.Size = new System.Drawing.Size(75, 36);
@@ -87,18 +86,21 @@
             // 
             // incidenceGrid
             // 
-            this.incidenceGrid.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.incidenceGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.incidenceGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.incidenceGrid.Location = new System.Drawing.Point(420, 35);
+            this.incidenceGrid.ColumnHeadersVisible = false;
+            this.incidenceGrid.Location = new System.Drawing.Point(366, 35);
             this.incidenceGrid.Name = "incidenceGrid";
-            this.incidenceGrid.Size = new System.Drawing.Size(288, 288);
+            this.incidenceGrid.RowHeadersVisible = false;
+            this.incidenceGrid.Size = new System.Drawing.Size(519, 288);
             this.incidenceGrid.TabIndex = 6;
             // 
             // saveButton
             // 
             this.saveButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.saveButton.Location = new System.Drawing.Point(633, 338);
+            this.saveButton.Location = new System.Drawing.Point(810, 338);
             this.saveButton.Name = "saveButton";
             this.saveButton.Size = new System.Drawing.Size(75, 36);
             this.saveButton.TabIndex = 5;
@@ -108,9 +110,8 @@
             // 
             // incidenceLabel
             // 
-            this.incidenceLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.incidenceLabel.AutoSize = true;
-            this.incidenceLabel.Location = new System.Drawing.Point(420, 13);
+            this.incidenceLabel.Location = new System.Drawing.Point(366, 13);
             this.incidenceLabel.Name = "incidenceLabel";
             this.incidenceLabel.Size = new System.Drawing.Size(87, 13);
             this.incidenceLabel.TabIndex = 6;
@@ -144,7 +145,7 @@
             // 
             // showDictionaryButton
             // 
-            this.showDictionaryButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.showDictionaryButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.showDictionaryButton.Location = new System.Drawing.Point(194, 338);
             this.showDictionaryButton.Name = "showDictionaryButton";
             this.showDictionaryButton.Size = new System.Drawing.Size(75, 36);
@@ -157,7 +158,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(736, 385);
+            this.ClientSize = new System.Drawing.Size(897, 385);
             this.Controls.Add(this.showDictionaryButton);
             this.Controls.Add(this.chooseDictionaryButton);
             this.Controls.Add(this.chooseFileButton);

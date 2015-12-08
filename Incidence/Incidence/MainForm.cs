@@ -27,6 +27,7 @@ namespace Incidence
         {
             chooseDictionaryButton.Visible = false;
             ReadDictionary();
+            saveButton.Enabled = false;
         }
 
         private void chooseFileButton_Click(object sender, EventArgs e)
@@ -146,6 +147,7 @@ namespace Incidence
         {
             model.mText = inputDataTextBox.Text;
             model.Calculate();
+            saveButton.Enabled = true;
             PrintMatrixToGrid(model.mIncedenceMatrix);
         }
 
@@ -173,21 +175,30 @@ namespace Incidence
 
         private void saveButton_Click(object sender, EventArgs e)
         {
-            using (StreamWriter file = new StreamWriter(string.Format("C:\\Users\\" + Environment.UserName + "\\Desktop\\Output.txt")))
+            try
             {
-                if (model.mTerminList.Count == 0)
+                using (StreamWriter file = new StreamWriter(string.Format("C:\\Users\\" + Environment.UserName + "\\Desktop\\Output.txt")))
                 {
-                    file.WriteLine("There are no termins.");
-                    return;
-                }
+                    if (model.mTerminList.Count == 0)
+                    {
+                        file.WriteLine("There are no termins.");
+                        return;
+                    }
 
-                for (int i = 0; i < model.mIncedenceMatrix.GetLength(1); i++)
-                {
-                    for (int j = 0; j < model.mIncedenceMatrix.GetLength(0); j++)
-                        file.Write(model.mIncedenceMatrix[i, j] + " ");
-                    file.WriteLine(" ");
+                    for (int i = 0; i < model.mIncedenceMatrix.GetLength(1); i++)
+                    {
+                        for (int j = 0; j < model.mIncedenceMatrix.GetLength(0); j++)
+                            file.Write(model.mIncedenceMatrix[i, j] + " ");
+                        file.WriteLine(" ");
+                    }
                 }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Load failure", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+            }
+
         }
     }
 }
