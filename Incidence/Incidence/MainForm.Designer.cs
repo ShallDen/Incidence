@@ -69,7 +69,7 @@
             this.calculateButton.Location = new System.Drawing.Point(420, 338);
             this.calculateButton.Name = "calculateButton";
             this.calculateButton.Size = new System.Drawing.Size(75, 36);
-            this.calculateButton.TabIndex = 2;
+            this.calculateButton.TabIndex = 4;
             this.calculateButton.Text = "Calculate";
             this.calculateButton.UseVisualStyleBackColor = true;
             this.calculateButton.Click += new System.EventHandler(this.calculateButton_Click);
@@ -93,7 +93,7 @@
             this.incidenceGrid.Location = new System.Drawing.Point(420, 35);
             this.incidenceGrid.Name = "incidenceGrid";
             this.incidenceGrid.Size = new System.Drawing.Size(288, 288);
-            this.incidenceGrid.TabIndex = 4;
+            this.incidenceGrid.TabIndex = 6;
             // 
             // saveButton
             // 
@@ -122,7 +122,7 @@
             this.chooseFileButton.Location = new System.Drawing.Point(12, 338);
             this.chooseFileButton.Name = "chooseFileButton";
             this.chooseFileButton.Size = new System.Drawing.Size(75, 36);
-            this.chooseFileButton.TabIndex = 7;
+            this.chooseFileButton.TabIndex = 0;
             this.chooseFileButton.Text = "Choose file";
             this.chooseFileButton.UseVisualStyleBackColor = true;
             this.chooseFileButton.Click += new System.EventHandler(this.chooseFileButton_Click);
@@ -137,7 +137,7 @@
             this.chooseDictionaryButton.Location = new System.Drawing.Point(93, 338);
             this.chooseDictionaryButton.Name = "chooseDictionaryButton";
             this.chooseDictionaryButton.Size = new System.Drawing.Size(75, 36);
-            this.chooseDictionaryButton.TabIndex = 8;
+            this.chooseDictionaryButton.TabIndex = 1;
             this.chooseDictionaryButton.Text = "Choose dictionary";
             this.chooseDictionaryButton.UseVisualStyleBackColor = true;
             this.chooseDictionaryButton.Click += new System.EventHandler(this.chooseDictionaryButton_Click);
@@ -148,7 +148,7 @@
             this.showDictionaryButton.Location = new System.Drawing.Point(194, 338);
             this.showDictionaryButton.Name = "showDictionaryButton";
             this.showDictionaryButton.Size = new System.Drawing.Size(75, 36);
-            this.showDictionaryButton.TabIndex = 9;
+            this.showDictionaryButton.TabIndex = 2;
             this.showDictionaryButton.Text = "Show dictionary";
             this.showDictionaryButton.UseVisualStyleBackColor = true;
             this.showDictionaryButton.Click += new System.EventHandler(this.showDictionaryButton_Click);

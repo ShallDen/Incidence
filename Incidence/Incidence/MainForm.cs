@@ -62,7 +62,7 @@ namespace Incidence
             }
             catch (Exception ex)
             {
-                MessageBox.Show(string.Format(ex.Message + "\nPlease choose dictionary file manually"));
+                MessageBox.Show(string.Format(ex.Message + "\nPlease choose dictionary file manually"), "Load failure", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
@@ -96,7 +96,7 @@ namespace Incidence
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message, "Load failure", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
@@ -110,7 +110,7 @@ namespace Incidence
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message, "Load failure", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
         }
@@ -125,7 +125,7 @@ namespace Incidence
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(string.Format("Dictionary file is not founded. Please choose dictionary file manually.\n" + ex.Message), "Load failure", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
         }
