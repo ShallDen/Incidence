@@ -153,25 +153,24 @@ namespace Incidence
 
         private void PrintMatrixToGrid(int[,] matrix)
         {
-            incidenceGrid.RowCount = matrix.GetLength(0) + 1;
-            incidenceGrid.ColumnCount = matrix.GetLength(1) + 1;
+            incidenceGrid.RowCount = matrix.GetLength(0);
+            incidenceGrid.ColumnCount = matrix.GetLength(1);
 
             //Show termins
             for (int i = 0; i < model.mTerminList.Count; i++)
             {
-                incidenceGrid.Columns[i].Width = 50;
-                incidenceGrid.Rows[i + 1].Cells[0].Value = model.mTerminList[i];
-                incidenceGrid.Rows[0].Cells[i + 1].Value = model.mTerminList[i];
-            }
+                incidenceGrid.Rows[i].HeaderCell.Value = model.mTerminList[i];
+                incidenceGrid.Columns[i].HeaderCell.Value = model.mTerminList[i];
 
-            incidenceGrid.Columns[0].Width = 90;
+                incidenceGrid.Columns[i].Width = 70;
+            }
 
             //Show values of matrix
             for (int i = 0; i < matrix.GetLength(0); i++)
             {
                 for (int j = 0; j < matrix.GetLength(1); j++)
                 {
-                    incidenceGrid.Rows[i + 1].Cells[j + 1].Value = matrix[i, j];
+                    incidenceGrid.Rows[i].Cells[j].Value = matrix[i, j];
                 }
             }
         }

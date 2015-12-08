@@ -90,10 +90,9 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.incidenceGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.incidenceGrid.ColumnHeadersVisible = false;
             this.incidenceGrid.Location = new System.Drawing.Point(366, 35);
             this.incidenceGrid.Name = "incidenceGrid";
-            this.incidenceGrid.RowHeadersVisible = false;
+            this.incidenceGrid.RowHeadersWidth = 150;
             this.incidenceGrid.Size = new System.Drawing.Size(519, 288);
             this.incidenceGrid.TabIndex = 6;
             // 
