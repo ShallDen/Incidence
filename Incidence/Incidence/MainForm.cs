@@ -17,6 +17,7 @@ namespace Incidence
         string mFileDir = string.Empty;
         string mDictionaryFileName = "..\\..\\Data\\Dictionary.txt";
         string mText = string.Empty;
+        int mColumnWidth = 70;
         IncidenceModel model = new IncidenceModel();
 
         public MainForm()
@@ -27,7 +28,11 @@ namespace Incidence
         {
             chooseDictionaryButton.Visible = false;
             ReadDictionary();
+
             saveButton.Enabled = false;
+            toolTip.SetToolTip(trackBar, "Scroll to change width of columns");
+            trackBar.Enabled = false;
+            trackBar.Value = mColumnWidth;
         }
 
         private void chooseFileButton_Click(object sender, EventArgs e)
@@ -147,14 +152,22 @@ namespace Incidence
         {
             model.mText = inputDataTextBox.Text;
             model.Calculate();
-            saveButton.Enabled = true;
             PrintMatrixToGrid(model.mIncedenceMatrix);
         }
 
         private void PrintMatrixToGrid(int[,] matrix)
         {
-            incidenceGrid.RowCount = matrix.GetLength(0);
-            incidenceGrid.ColumnCount = matrix.GetLength(1);
+            var rowLength = matrix.GetLength(0);
+            var columnLength = matrix.GetLength(0);
+
+            if (rowLength < 1 || columnLength < 1)
+            {
+                MessageBox.Show("Matrix is empty. There no data to show.", "Show info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+                
+            incidenceGrid.RowCount = rowLength;
+            incidenceGrid.ColumnCount = columnLength;
 
             //Show termins
             for (int i = 0; i < model.mTerminList.Count; i++)
@@ -162,17 +175,20 @@ namespace Incidence
                 incidenceGrid.Rows[i].HeaderCell.Value = model.mTerminList[i];
                 incidenceGrid.Columns[i].HeaderCell.Value = model.mTerminList[i];
 
-                incidenceGrid.Columns[i].Width = 70;
+                incidenceGrid.Columns[i].Width = mColumnWidth;
             }
 
             //Show values of matrix
-            for (int i = 0; i < matrix.GetLength(0); i++)
+            for (int i = 0; i < rowLength; i++)
             {
-                for (int j = 0; j < matrix.GetLength(1); j++)
+                for (int j = 0; j < columnLength; j++)
                 {
                     incidenceGrid.Rows[i].Cells[j].Value = matrix[i, j];
                 }
             }
+
+            saveButton.Enabled = true;
+            trackBar.Enabled = true;
         }
 
         private void saveButton_Click(object sender, EventArgs e)
@@ -198,9 +214,28 @@ namespace Incidence
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Load failure", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-
             }
+        }
 
+        private void trackBar_Scroll(object sender, EventArgs e)
+        {
+            toolTip.SetToolTip(trackBar, trackBar.Value.ToString());
+
+            try
+            {
+                for (int i = 0; i < model.mTerminList.Count; i++)
+                {
+                    incidenceGrid.Rows[i].HeaderCell.Value = model.mTerminList[i];
+                    incidenceGrid.Columns[i].HeaderCell.Value = model.mTerminList[i];
+
+                    incidenceGrid.Columns[i].Width = trackBar.Value;
+                    mColumnWidth = trackBar.Value;
+                }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Scroll failure", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
     }
 }
