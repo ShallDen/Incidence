@@ -26,7 +26,7 @@ namespace Incidence
         private string[] wordSeparator =  { " ", ". ", "!", "?" };
         private string[] sentenceSeparator =  { ". ", "!", "?", "\r\n" };
 
-        private int[,] mIncedenceMatrix;
+        public int[,] mIncedenceMatrix;
 
         public void Calculate()
         {

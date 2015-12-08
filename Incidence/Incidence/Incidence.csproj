@@ -92,6 +92,8 @@
   <ItemGroup>
     <Content Include="Data\Dictionary.txt" />
     <Content Include="Data\Text.txt" />
+    <Content Include="Small Data\Dictionary.txt" />
+    <Content Include="Small Data\Text.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

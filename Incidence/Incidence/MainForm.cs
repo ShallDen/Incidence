@@ -135,6 +135,7 @@ namespace Incidence
         private void calculateButton_Click(object sender, EventArgs e)
         {
             model.Calculate();
+            incidenceGrid.AutoGenerateColumns = true;
 
             inputDataTextBox.Text = "TEXT:\r\n";
             inputDataTextBox.Text += "************************\r\n";
@@ -163,6 +164,19 @@ namespace Incidence
             DictionaryForm dictionaryForm = new DictionaryForm();
             dictionaryForm.mDictionarryText = model.mDictionaryText;
             dictionaryForm.ShowDialog();
+        }
+
+        private void saveButton_Click(object sender, EventArgs e)
+        {
+            using (StreamWriter file = new StreamWriter(@"C:\Users\ShallDen\Desktop\Output.txt"))
+            {
+                for (int i = 0; i < model.mIncedenceMatrix.GetLength(1); i++)
+                {
+                    for (int j = 0; j < model.mIncedenceMatrix.GetLength(0); j++)
+                        file.Write(model.mIncedenceMatrix[i, j] + " ");
+                    file.WriteLine(" ");
+                }
+            }
         }
     }
 }
