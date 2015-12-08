@@ -159,9 +159,12 @@ namespace Incidence
             //Show termins
             for (int i = 0; i < model.mTerminList.Count; i++)
             {
+                incidenceGrid.Columns[i].Width = 50;
                 incidenceGrid.Rows[i + 1].Cells[0].Value = model.mTerminList[i];
                 incidenceGrid.Rows[0].Cells[i + 1].Value = model.mTerminList[i];
             }
+
+            incidenceGrid.Columns[0].Width = 90;
 
             //Show values of matrix
             for (int i = 0; i < matrix.GetLength(0); i++)
