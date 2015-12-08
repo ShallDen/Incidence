@@ -15,13 +15,18 @@ namespace Incidence
     {
         string mFileName = string.Empty;
         string mFileDir = string.Empty;
-        string mDictionaryFileName = string.Empty;
+        string mDictionaryFileName = "..\\..\\Data\\Dictionary.txt";
         string mText = string.Empty;
         IncidenceModel model = new IncidenceModel();
 
         public MainForm()
         {
             InitializeComponent();
+        }
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            chooseDictionaryButton.Visible = false;
+            ReadDictionary();
         }
 
         private void chooseFileButton_Click(object sender, EventArgs e)
@@ -53,8 +58,6 @@ namespace Incidence
                         chooseDictionaryButton.Visible = false;
                     else
                         chooseDictionaryButton.Visible = true;
-
-                    inputDataTextBox.Text = model.mText;
                 }
             }
             catch (Exception ex)
@@ -102,7 +105,7 @@ namespace Incidence
             try
             {
                 StreamReader sr = new StreamReader(mFileName);
-                model.mText = sr.ReadToEnd();
+                inputDataTextBox.Text = sr.ReadToEnd();
                 return true;
             }
             catch (Exception ex)
@@ -127,38 +130,6 @@ namespace Incidence
             }
         }
 
-        private void clearButton_Click(object sender, EventArgs e)
-        {
-            inputDataTextBox.Text = string.Empty;
-        }
-
-        private void calculateButton_Click(object sender, EventArgs e)
-        {
-            model.Calculate();
-            incidenceGrid.AutoGenerateColumns = true;
-
-            inputDataTextBox.Text = "TEXT:\r\n";
-            inputDataTextBox.Text += "************************\r\n";
-            inputDataTextBox.Text += model.mClearedText;
-            inputDataTextBox.Text += "\r\n\r\nDICTIONARY:\r\n";
-            inputDataTextBox.Text += "************************\r\n";
-            inputDataTextBox.Text += model.mClearedDictionaryText;
-
-            inputDataTextBox.Text += "\r\n\r\nTERMINS:\r\n";
-            inputDataTextBox.Text += "************************";
-
-            foreach (var word in model.mTerminList)
-            {
-                inputDataTextBox.Text += "\r\n";
-                inputDataTextBox.Text += word;
-            }
-        }
-
-        private void MainForm_Load(object sender, EventArgs e)
-        {
-            chooseDictionaryButton.Visible = false;
-        }
-
         private void showDictionaryButton_Click(object sender, EventArgs e)
         {
             DictionaryForm dictionaryForm = new DictionaryForm();
@@ -166,10 +137,30 @@ namespace Incidence
             dictionaryForm.ShowDialog();
         }
 
+        private void clearButton_Click(object sender, EventArgs e)
+        {
+            inputDataTextBox.Text = string.Empty;
+        }
+
+        private void calculateButton_Click(object sender, EventArgs e)
+        {
+            model.mText = inputDataTextBox.Text;
+            model.Calculate();
+            incidenceGrid.AutoGenerateColumns = true;
+
+            //TO DO: output to grid
+        }
+
         private void saveButton_Click(object sender, EventArgs e)
         {
-            using (StreamWriter file = new StreamWriter(@"C:\Users\ShallDen\Desktop\Output.txt"))
+            using (StreamWriter file = new StreamWriter(string.Format("C:\\Users\\" + Environment.UserName + "\\Desktop\\Output.txt")))
             {
+                if(model.mTerminList.Count == 0)
+                {
+                    file.WriteLine("There are no termins.");
+                    return;
+                }
+
                 for (int i = 0; i < model.mIncedenceMatrix.GetLength(1); i++)
                 {
                     for (int j = 0; j < model.mIncedenceMatrix.GetLength(0); j++)

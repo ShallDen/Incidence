@@ -10,18 +10,18 @@ namespace Incidence
     {
         public string mText = string.Empty;
         public string mClearedText = string.Empty;
-        public List<string> mWordList = new List<string>();
-        public List<string> mLowerWordList = new List<string>();
+        public List<string> mWordList;
+        public List<string> mLowerWordList;
 
         public string mDictionaryText = string.Empty;
         public string mClearedDictionaryText = string.Empty;
-        public List<string> mLowerDictionaryList = new List<string>();
-        public List<string> mLowerWordDictionaryList = new List<string>();
+        public List<string> mLowerDictionaryList;
+        public List<string> mLowerWordDictionaryList;
 
-        public List<string> mTerminList = new List<string>();
+        public List<string> mTerminList;
 
-        public List<string> mSentenceList = new List<string>();
-        public List<string> mLowerSentenceList = new List<string>();
+        public List<string> mSentenceList;
+        public List<string> mLowerSentenceList;
 
         private string[] wordSeparator =  { " ", ". ", "!", "?" };
         private string[] sentenceSeparator =  { ". ", "!", "?", "\r\n" };
@@ -30,12 +30,26 @@ namespace Incidence
 
         public void Calculate()
         {
+            InitializeTextItems();
             TextPreProcessing();
             DictionaryPreProcessing();
             SentencePreProcessing();
-            FindDictionaryItems();
+            FindTermins();
             InitializeMatrix();
             FillMatrix();
+        }
+
+        public void InitializeTextItems()
+        {
+            mClearedText = string.Empty;
+            mWordList = new List<string>();
+            mLowerWordList = new List<string>();
+            mClearedDictionaryText = string.Empty;
+            mLowerDictionaryList = new List<string>();
+            mLowerWordDictionaryList = new List<string>();
+            mTerminList = new List<string>();
+            mSentenceList = new List<string>();
+            mLowerSentenceList = new List<string>();
         }
 
         private void TextPreProcessing()
@@ -79,7 +93,7 @@ namespace Incidence
             return text;
         }
 
-        private void FindDictionaryItems()
+        private void FindTermins()
         {
             foreach(var textWord in mLowerWordList)
             {
@@ -110,7 +124,7 @@ namespace Incidence
             mIncedenceMatrix = new int[mTerminList.Count, mTerminList.Count];
             for (int i = 0; i < mTerminList.Count; i++)
                 for (int j = 0; j < mTerminList.Count; j++)
-                    mIncedenceMatrix[i, j] = -1;
+                    mIncedenceMatrix[i, j] = 0;
         }
          
         private void FillMatrix()
