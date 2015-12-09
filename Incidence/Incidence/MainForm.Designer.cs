@@ -55,7 +55,7 @@
             this.inputDataTextBox.Multiline = true;
             this.inputDataTextBox.Name = "inputDataTextBox";
             this.inputDataTextBox.Size = new System.Drawing.Size(337, 288);
-            this.inputDataTextBox.TabIndex = 0;
+            this.inputDataTextBox.TabIndex = 7;
             this.toolTip.SetToolTip(this.inputDataTextBox, "Text");
             // 
             // inputTextLabelLabel
@@ -96,12 +96,13 @@
             this.incidenceGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.incidenceGrid.BackgroundColor = System.Drawing.SystemColors.Window;
             this.incidenceGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.incidenceGrid.Location = new System.Drawing.Point(366, 35);
             this.incidenceGrid.Name = "incidenceGrid";
             this.incidenceGrid.RowHeadersWidth = 150;
             this.incidenceGrid.Size = new System.Drawing.Size(467, 288);
-            this.incidenceGrid.TabIndex = 6;
+            this.incidenceGrid.TabIndex = 8;
             this.toolTip.SetToolTip(this.incidenceGrid, "Matrix");
             // 
             // saveButton
@@ -110,7 +111,7 @@
             this.saveButton.Location = new System.Drawing.Point(758, 338);
             this.saveButton.Name = "saveButton";
             this.saveButton.Size = new System.Drawing.Size(75, 36);
-            this.saveButton.TabIndex = 5;
+            this.saveButton.TabIndex = 6;
             this.saveButton.Text = "Save results";
             this.toolTip.SetToolTip(this.saveButton, "Click to save results to file");
             this.saveButton.UseVisualStyleBackColor = true;
@@ -175,7 +176,7 @@
             this.trackBar.Name = "trackBar";
             this.trackBar.Size = new System.Drawing.Size(304, 45);
             this.trackBar.SmallChange = 5;
-            this.trackBar.TabIndex = 7;
+            this.trackBar.TabIndex = 5;
             this.trackBar.Tag = "";
             this.trackBar.Value = 20;
             this.trackBar.Scroll += new System.EventHandler(this.trackBar_Scroll);

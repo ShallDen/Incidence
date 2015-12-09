@@ -203,12 +203,49 @@ namespace Incidence
                         return;
                     }
 
+                    file.WriteLine("Matrix:");
+                    file.WriteLine("");
+
+                    //Write top indexes
+                    file.Write("     ");
                     for (int i = 0; i < model.mIncedenceMatrix.GetLength(1); i++)
                     {
+                        if ((i + 1) < 10)
+                            file.Write((i + 1) + " ");
+                        else if ((i % 10 + 1) == 10)
+                            file.Write(0 + " ");
+                        else
+                            file.Write((i % 10 + 1) + " ");
+                    }
+
+                    //Write top _
+                    file.WriteLine(" ");
+                    file.Write("    ");
+                    for (int i = 0; i < model.mIncedenceMatrix.GetLength(1); i++)
+                    {
+                        file.Write("__");
+                    }
+
+                    //Write left indexes, | and matrix
+                    file.WriteLine(" ");
+                    for (int i = 0; i < model.mIncedenceMatrix.GetLength(1); i++)
+                    {
+                        if ((i + 1) < 10)
+                            file.Write((i + 1) + ".  |");
+                        else
+                            file.Write((i + 1) + ". |");
                         for (int j = 0; j < model.mIncedenceMatrix.GetLength(0); j++)
                             file.Write(model.mIncedenceMatrix[i, j] + " ");
                         file.WriteLine(" ");
                     }
+
+                    //Write termins
+                    file.WriteLine(" ");
+                    file.WriteLine(" ");
+                    file.WriteLine("Termins:");
+                    file.WriteLine(" ");
+                    for (int i = 0; i < model.mTerminList.Count; i++)
+                        file.WriteLine(string.Format((i + 1) + ". " + model.mTerminList[i]));
                 }
             }
             catch (Exception ex)
