@@ -32,6 +32,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>matrixIcon.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -92,6 +95,7 @@
   <ItemGroup>
     <Content Include="Data\Dictionary.txt" />
     <Content Include="Data\Text.txt" />
+    <Content Include="matrixIcon.ico" />
     <Content Include="Small Data\Dictionary.txt" />
     <Content Include="Small Data\Text.txt" />
   </ItemGroup>
