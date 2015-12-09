@@ -15,7 +15,7 @@ namespace Incidence
     {
         string mFileName = string.Empty;
         string mFileDir = string.Empty;
-        string mDictionaryFileName = "..\\..\\Data\\Dictionary.txt";
+        string mDictionaryFileName = string.Format("C:\\Users\\" + Environment.UserName + "\\Desktop\\Dictionary.txt");
         string mText = string.Empty;
         int mColumnWidth = 70;
         bool isAutoCalculate = true;
