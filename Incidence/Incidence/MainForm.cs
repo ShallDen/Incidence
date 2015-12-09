@@ -18,6 +18,7 @@ namespace Incidence
         string mDictionaryFileName = "..\\..\\Data\\Dictionary.txt";
         string mText = string.Empty;
         int mColumnWidth = 70;
+        bool isAutoCalculate = true;
         IncidenceModel model = new IncidenceModel();
 
         public MainForm()
@@ -27,9 +28,11 @@ namespace Incidence
         private void MainForm_Load(object sender, EventArgs e)
         {
             chooseDictionaryButton.Visible = false;
+            chooseDictionaryToolStripMenuItem.Visible = false;
             ReadDictionary();
 
             saveButton.Enabled = false;
+            saveResultsToFileToolStripMenuItem.Enabled = false;
             toolTip.SetToolTip(trackBar, "Scroll to change width of columns");
             trackBar.Enabled = false;
             trackBar.Value = mColumnWidth;
@@ -61,10 +64,19 @@ namespace Incidence
                     isDictionaonaryAutoLoaded = ReadDictionary();
 
                     if (isDictionaonaryAutoLoaded)
+                    {
                         chooseDictionaryButton.Visible = false;
+                        chooseDictionaryToolStripMenuItem.Visible = false;
+                    }
                     else
+                    {
                         chooseDictionaryButton.Visible = true;
+                        chooseDictionaryToolStripMenuItem.Visible = true;
+                    }
+
                 }
+                if (isAutoCalculate)
+                    calculateButton_Click(sender, e);
             }
             catch (Exception ex)
             {
@@ -95,9 +107,15 @@ namespace Incidence
                     isDictionaonaryLoaded = ReadDictionary();
 
                     if (isDictionaonaryLoaded)
+                    {
                         chooseDictionaryButton.Visible = false;
+                        chooseDictionaryToolStripMenuItem.Visible = false;
+                    }
                     else
+                    {
                         chooseDictionaryButton.Visible = true;
+                        chooseDictionaryToolStripMenuItem.Visible = true;
+                    }
                 }
             }
             catch (Exception ex)
@@ -165,7 +183,7 @@ namespace Incidence
                 MessageBox.Show("Matrix is empty. There no data to show.", "Show info", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
-                
+
             incidenceGrid.RowCount = rowLength;
             incidenceGrid.ColumnCount = columnLength;
 
@@ -188,6 +206,7 @@ namespace Incidence
             }
 
             saveButton.Enabled = true;
+            saveResultsToFileToolStripMenuItem.Enabled = true;
             trackBar.Enabled = true;
         }
 
@@ -269,9 +288,55 @@ namespace Incidence
                     mColumnWidth = trackBar.Value;
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Scroll failure", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void choosefileToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            chooseFileButton_Click(sender, e);
+        }
+
+        private void chooseDictionaryToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            chooseDictionaryButton_Click(sender, e);
+        }
+
+        private void showDictionaryToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            showDictionaryButton_Click(sender, e);
+        }
+
+        private void calculateToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            calculateButton_Click(sender, e);
+        }
+
+        private void saveResultsToFileToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            saveButton_Click(sender, e);
+        }
+
+        private void autoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (autoToolStripMenuItem.Checked == true)
+            {
+                autoToolStripMenuItem.Checked = false;
+                autoToolStripMenuItem.Text = "Manual";
+                isAutoCalculate = false;
+            }
+            else
+            {
+                autoToolStripMenuItem.Checked = true;
+                autoToolStripMenuItem.Text = "Auto";
+                isAutoCalculate = true;
             }
         }
     }
