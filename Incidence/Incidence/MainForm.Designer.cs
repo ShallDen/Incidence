@@ -298,14 +298,14 @@
             this.autoToolStripMenuItem});
             this.calculateModeToolStripMenuItem.Name = "calculateModeToolStripMenuItem";
             this.calculateModeToolStripMenuItem.Size = new System.Drawing.Size(102, 20);
-            this.calculateModeToolStripMenuItem.Text = "Calculate mode";
+            this.calculateModeToolStripMenuItem.Text = "&Calculate mode";
             // 
             // autoToolStripMenuItem
             // 
             this.autoToolStripMenuItem.Checked = true;
             this.autoToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
             this.autoToolStripMenuItem.Name = "autoToolStripMenuItem";
-            this.autoToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
+            this.autoToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.autoToolStripMenuItem.Text = "Auto";
             this.autoToolStripMenuItem.Click += new System.EventHandler(this.autoToolStripMenuItem_Click);
             // 
