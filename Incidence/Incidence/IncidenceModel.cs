@@ -112,7 +112,7 @@ namespace Incidence
                         isAlreadyInList = mTerminList.Any(c => c.ToString().Contains(stemmedDictionaryWord));
 
                         if (!isAlreadyInList)
-                            mTerminList.Add(textWord);
+                            mTerminList.Add(dictionaryWord);
 
                         isAlreadyInList = false;
                     }
@@ -140,23 +140,29 @@ namespace Incidence
 
         private void FillMatrix()
         {
+            string stemmedTermin = string.Empty;
+            string stemmedInternalTermin = string.Empty;
             int i = 0;
+
             foreach (var termin in mTerminList)
             {
-                List<string> sentences = FindSentenseByWord(termin);
+                stemmedTermin = Stemming.Stemm(termin);
+                List<string> sentences = FindSentenseByWord(stemmedTermin);
 
                 foreach (var sentence in sentences)
                 {
                     int j = 0;
                     foreach (var internalTermin in mTerminList)
                     {
-                        if (internalTermin == termin || mIncedenceMatrix[i, j] == 1)
+                        stemmedInternalTermin = Stemming.Stemm(internalTermin);
+
+                        if (stemmedInternalTermin == stemmedTermin || mIncedenceMatrix[i, j] == 1)
                         {
                             j++;
                             continue;
                         }
 
-                        if (sentence.Contains(internalTermin))
+                        if (sentence.Contains(stemmedInternalTermin))
                             mIncedenceMatrix[i, j] = 1;
                         else
                             mIncedenceMatrix[i, j] = 0;
