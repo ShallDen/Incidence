@@ -23,8 +23,8 @@ namespace Incidence
         public List<string> mSentenceList;
         public List<string> mLowerSentenceList;
 
-        private string[] wordSeparator =  { " ", ". ", "!", "?" };
-        private string[] sentenceSeparator =  { ". ", "!", "?", "\r\n" };
+        private string[] wordSeparator = { " ", ". ", "!", "?" };
+        private string[] sentenceSeparator = { ". ", "!", "?", "\r\n" };
 
         public int[,] mIncedenceMatrix;
 
@@ -95,18 +95,29 @@ namespace Incidence
 
         private void FindTermins()
         {
-            foreach(var textWord in mLowerWordList)
+            bool isAlreadyInList = false;
+            string stemmedTextWord = string.Empty;
+            string stemmedDictionaryWord = string.Empty;
+
+            foreach (var textWord in mLowerWordList)
             {
-                foreach(var dictionaryWord in mLowerWordDictionaryList)
+                stemmedTextWord = Stemming.Stemm(textWord);
+
+                foreach (var dictionaryWord in mLowerWordDictionaryList)
                 {
-                    if(textWord == dictionaryWord)
+                    stemmedDictionaryWord = Stemming.Stemm(dictionaryWord);
+
+                    if (stemmedTextWord == stemmedDictionaryWord)
                     {
-                        mTerminList.Add(textWord);
+                        isAlreadyInList = mTerminList.Any(c => c.ToString().Contains(stemmedDictionaryWord));
+
+                        if (!isAlreadyInList)
+                            mTerminList.Add(textWord);
+
+                        isAlreadyInList = false;
                     }
                 }
             }
-
-            mTerminList = mTerminList.Distinct().ToList(); //delete repeating words
         }
 
         private List<string> CreateListOfWords(string text)
@@ -116,7 +127,7 @@ namespace Incidence
 
         private List<string> WordsToLowerCase(List<string> list)
         {
-            return list.Select(c => c.ToLower()).ToList(); 
+            return list.Select(c => c.ToLower()).ToList();
         }
 
         private void InitializeMatrix()
@@ -126,7 +137,7 @@ namespace Incidence
                 for (int j = 0; j < mTerminList.Count; j++)
                     mIncedenceMatrix[i, j] = 0;
         }
-         
+
         private void FillMatrix()
         {
             int i = 0;
@@ -160,7 +171,7 @@ namespace Incidence
         private List<string> FindSentenseByWord(string word)
         {
             List<string> foundedSententences = new List<string>();
-            foreach(var sentense in mLowerSentenceList)
+            foreach (var sentense in mLowerSentenceList)
             {
                 if (sentense.Contains(word))
                     foundedSententences.Add(sentense);
