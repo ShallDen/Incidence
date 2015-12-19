@@ -28,8 +28,6 @@ namespace Incidence
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            chooseDictionaryButton.Visible = false;
-            chooseDictionaryToolStripMenuItem.Visible = false;
             ReadDictionary();
 
             saveButton.Enabled = false;
@@ -41,7 +39,6 @@ namespace Incidence
 
         private void chooseFileButton_Click(object sender, EventArgs e)
         {
-            bool isDictionaonaryAutoLoaded = false;
             try
             {
                 openFileDialog.FileName = string.Empty;
@@ -62,19 +59,7 @@ namespace Incidence
                     inputDataTextBox.ScrollBars = ScrollBars.Both;
 
                     ReadText();
-                    isDictionaonaryAutoLoaded = ReadDictionary();
-
-                    if (isDictionaonaryAutoLoaded)
-                    {
-                        chooseDictionaryButton.Visible = false;
-                        chooseDictionaryToolStripMenuItem.Visible = false;
-                    }
-                    else
-                    {
-                        chooseDictionaryButton.Visible = true;
-                        chooseDictionaryToolStripMenuItem.Visible = true;
-                    }
-
+                    ReadDictionary();
                 }
                 if (isAutoCalculate)
                     calculateButton_Click(sender, e);
@@ -87,8 +72,6 @@ namespace Incidence
 
         private void chooseDictionaryButton_Click(object sender, EventArgs e)
         {
-            bool isDictionaonaryLoaded = false;
-
             try
             {
                 openFileDialog.FileName = string.Empty;
@@ -105,18 +88,7 @@ namespace Incidence
 
                     mDictionaryFileName = openFileDialog.FileName;
 
-                    isDictionaonaryLoaded = ReadDictionary();
-
-                    if (isDictionaonaryLoaded)
-                    {
-                        chooseDictionaryButton.Visible = false;
-                        chooseDictionaryToolStripMenuItem.Visible = false;
-                    }
-                    else
-                    {
-                        chooseDictionaryButton.Visible = true;
-                        chooseDictionaryToolStripMenuItem.Visible = true;
-                    }
+                    ReadDictionary();
                 }
             }
             catch (Exception ex)
@@ -150,8 +122,7 @@ namespace Incidence
             }
             catch (Exception ex)
             {
-                MessageBox.Show(string.Format("Dictionary file is not founded. Please choose dictionary file manually.\n" + ex.Message), "Load failure", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return false;
+               return false;
             }
         }
 
@@ -181,7 +152,7 @@ namespace Incidence
 
             if (rowLength < 1 || columnLength < 1)
             {
-                MessageBox.Show("Matrix is empty. There no data to show.", "Show info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Matrix is empty. There are no data to show.", "Show info", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
 
