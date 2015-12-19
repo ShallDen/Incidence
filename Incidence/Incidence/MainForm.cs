@@ -19,6 +19,7 @@ namespace Incidence
         string mText = string.Empty;
         int mColumnWidth = 33;
         bool isAutoCalculate = true;
+        bool isFirstAttempt = true;
         IncidenceModel model = new IncidenceModel();
 
         public MainForm()
@@ -122,7 +123,10 @@ namespace Incidence
             }
             catch (Exception ex)
             {
-               return false;
+                if(!isFirstAttempt)
+                    MessageBox.Show(string.Format("Dictionary file is not founded. Please choose dictionary file manually.\n" + ex.Message), "Load failure", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                isFirstAttempt = false;
+                return false;
             }
         }
 
